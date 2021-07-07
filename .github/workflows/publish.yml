@@ -4,18 +4,18 @@ on:
     branches:
       - main
     paths:
-      - 'packages/api/**'
-      - '.github/workflows/api.yml'
+      - 'packages/a/**'
+      - '.github/workflows/publish.yml'
   pull_request:
     branches:
       - main
     paths:
-      - 'packages/api/**'
-      - '.github/workflows/api.yml'
+      - 'packages/a/**'
+      - '.github/workflows/publish.yml'
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Test
+    name: test npm run build
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -23,6 +23,7 @@ jobs:
           node-version: 16
       - uses: bahmutov/npm-install@v1
       - run: npm run build --workspace packages/a
+      - run: cd packages/a && npm run build
 
   deploy:
     name: Deploy worker
