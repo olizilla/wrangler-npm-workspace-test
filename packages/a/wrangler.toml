@@ -1,0 +1,12 @@
+name = "wrangler-npm-workspace-test"
+type = "javascript"
+workers_dev = true
+account_id = "6e5a2aed80cd37d77e8d0c797a75ebbd"
+
+# tell wrangler how to build our service-worker bundle
+[build]
+command = "npm run build"
+watch_dir = "src"
+
+[build.upload]
+format = "service-worker"
